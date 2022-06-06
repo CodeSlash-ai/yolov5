@@ -57,22 +57,27 @@ def main():
     model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
     
     # storing the name of the file on which detection would run
-    file_name = input("Filename to run detection: ")
+    # file_name = input("Filename to run detection: ")
+    file_name = "yolov5/data/images/bus.jpg"
+
+    results = model(file_name)
+
+    results.show()
 
     # extracting the last three characters to find out wether its an image or a video
-    last_three_chars = file_name[-3:]
+    # last_three_chars = file_name[-3:]
 
-    if last_three_chars == "mp4":
+    # if last_three_chars == "mp4":
         
-        # process for video
-        handleVideo(model, file_name)
-    elif last_three_chars == "jpg":
+    #     # process for video
+    #     handleVideo(model, file_name)
+    # elif last_three_chars == "jpg":
 
-        # process for image
-        handleImage(model, file_name)
-    else:
-        print("ERROR! Filename is not correct. Only .jpg and .mp4 are supported.")
-        return
+    #     # process for image
+    #     handleImage(model, file_name)
+    # else:
+    #     print("ERROR! Filename is not correct. Only .jpg and .mp4 are supported.")
+    #     return
 
 
 if __name__ == "__main__":
