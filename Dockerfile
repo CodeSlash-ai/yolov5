@@ -24,6 +24,20 @@ RUN pip3 install seaborn>=0.11.0
 RUN pip3 install ipython
 RUN pip3 install psutil
 RUN pip3 install thop
+RUN pip3 install uvicorn
+RUN pip3 install fastapi
+# RUN pip install shutil
+RUN pip3 install pydantic
+# RUN pip3 install io
+# RUN pip3 install base64
+RUN pip3 install pathlib
+RUN pip3 install fastapi_health
+RUN pip3 install python-multipart
 
 
 COPY yolov5 yolov5
+COPY app.py .
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app:app", "--host=0.0.0.0", "--reload"]
