@@ -23,17 +23,21 @@ Build the docker image:
 
 Create the docker container:
 ```bash
-  sudo docker run --name yolov5-docker-test1 -it --shm-size=1g -d --rm -v <absolute path to data>:/mydata yolov5-docker
+  sudo docker run --name yolov5-docker-test1 -p 8000:8000 yolov5-docker
 ```
-
-**Note:** &nbsp; Don't forget the add the absolute path to your data directory.   
-**Note:** &nbsp; *yolov5-docker-test1* and *mydata*&nbsp;are custom names. You can change them to whatever you like.
+   
+**Note:** &nbsp; *yolov5-docker-test1* &nbsp;is a custom names. You can change it to whatever you like.
 
 ### Step 4
 
 Running detection:
 ```bash
-  sudo docker exec -it yolov5-docker-test1 python yolov5/detect.py --source mydata --project mydata --name results
+  python3 request.py --source <path to image> --save <path to save>
 ```
 
-If you have followed the steps correctly, there must be a new directory "results" in your data directory containing all of the results. 
+Example:
+```bash
+  python3 request.py --source data/image1.jpg --save results/res1.jpg
+```
+
+If you have followed the steps correctly, there must be a new directory "results" in your home directory containing the image with predictions. You will also get predictions in your terminal.  
